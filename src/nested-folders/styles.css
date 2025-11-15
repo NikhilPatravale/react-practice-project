@@ -1,0 +1,9 @@
+.tree .children {
+  margin-left: 20px;
+  border-left: 1px dashed #ccc;
+  padding-left: 8px;
+}
+
+.tree .node {
+  padding: 4px 0;
+}
