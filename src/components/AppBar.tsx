@@ -44,6 +44,12 @@ export default function AppBarComponent() {
                 Nested Folders
               </Typography>
             </Link>
+            |
+            <Link to="/infinite-scroll" style={{ color: 'white', textDecoration: 'none' }}>
+              <Typography variant="body1" component="div" sx={{ flexGrow: 1 }}>
+                Infinite Scroll
+              </Typography>
+            </Link>
           </Box>
         </Toolbar>
       </AppBar>
