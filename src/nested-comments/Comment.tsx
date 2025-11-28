@@ -27,7 +27,7 @@ export default function Comment(props: { id: number, level?: number }) {
     }
   }
 
-  return <Box sx={{ marginLeft: `${level * 20}px` }}>
+  return <Box sx={{ marginLeft: `${level * 20}px`, marginBottom: '1rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
     <Box>
       <Typography variant="body1">{text}</Typography>
       <Button>{likes}</Button>

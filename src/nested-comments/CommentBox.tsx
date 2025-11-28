@@ -1,6 +1,6 @@
 import { useState, type ChangeEventHandler } from "react";
 import { useCommentsState } from "./context/CommentsState";
-import { Box, Button, TextareaAutosize } from "@mui/material";
+import { Box, Button } from "@mui/material";
 
 export default function CommentBox(props: { parentId: number | null, onSubmit?: () => void }) {
   const { parentId, onSubmit } = props;
@@ -41,8 +41,8 @@ export default function CommentBox(props: { parentId: number | null, onSubmit?: 
     }
   }
 
-  return <Box>
-    <TextareaAutosize value={commentText} minRows={5} onChange={handleChange}></TextareaAutosize>
+  return <Box sx={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
+    <textarea style={{ padding: '1rem', height: '2rem' }} value={commentText} onChange={handleChange}></textarea>
     <Button onClick={handleSubmit}>Add</Button>
   </Box>
 }

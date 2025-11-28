@@ -9,13 +9,13 @@ const getParentComments = ({ byId, allIds }: COMMENTS_STATE) => {
 
 export default function CommentsRenderer() {
   const { byId, allIds } = useCommentsState();
-  return <Box>
+  return <Box sx={{ padding: '2rem', display: 'flex', alignItems: 'center', flexDirection: 'column', gap: '5rem' }}>
     <Typography variant="h4">Nested Comments</Typography>
+    <CommentBox parentId={null} />
     <Box>
-      <CommentBox parentId={null} />
+      {getParentComments({ byId, allIds }).map((id) => {
+        return <Comment id={id} />
+      })}
     </Box>
-    {getParentComments({ byId, allIds }).map((id) => {
-      return <Comment id={id} />
-    })}
   </Box>
 };
