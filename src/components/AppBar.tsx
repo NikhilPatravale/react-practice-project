@@ -50,6 +50,12 @@ export default function AppBarComponent() {
                 Infinite Scroll
               </Typography>
             </Link>
+            |
+            <Link to="/nested-accordion" style={{ color: 'white', textDecoration: 'none' }}>
+              <Typography variant="body1" component="div" sx={{ flexGrow: 1 }}>
+                Nested Accordion
+              </Typography>
+            </Link>
           </Box>
         </Toolbar>
       </AppBar>
