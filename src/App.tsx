@@ -6,6 +6,7 @@ import Pagination from './pagination';
 import NestedFolders from './nested-folders';
 import InfiniteScroll from './infinite-scroll-hook';
 import NestedAccordion from './nested-accordion';
+import NestedComments from './nested-comments';
 
 export default function App() {
 
@@ -20,6 +21,7 @@ export default function App() {
         <Route path='/nested-folders' element={<NestedFolders />} />
         <Route path='/infinite-scroll' element={<InfiniteScroll />} />
         <Route path='/nested-accordion' element={<NestedAccordion />} />
+        <Route path='/nested-comments' element={<NestedComments />} />
       </Routes>
     </Router>
   )

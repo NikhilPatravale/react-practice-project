@@ -56,6 +56,12 @@ export default function AppBarComponent() {
                 Nested Accordion
               </Typography>
             </Link>
+            |
+            <Link to="/nested-comments" style={{ color: 'white', textDecoration: 'none' }}>
+              <Typography variant="body1" component="div" sx={{ flexGrow: 1 }}>
+                Nested Comments
+              </Typography>
+            </Link>
           </Box>
         </Toolbar>
       </AppBar>
