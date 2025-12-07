@@ -40,7 +40,7 @@ export default class ToastManager {
       id: Date.now(),
       createdAt: new Date(Date.now()),
     };
-    this.toasts = [...this.toasts, newToast];
+    this.toasts = [newToast, ...this.toasts];
     this.notify();
     return newToast.id;
   }

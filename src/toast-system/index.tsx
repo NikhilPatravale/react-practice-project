@@ -1,8 +1,23 @@
 import { useCallback, useEffect, useState } from "react";
 import ToastManager, { type Toast } from "./ToastManager";
+import { Box, Button, Typography } from "@mui/material";
 
 function Toast(props: Toast) {
-  const { id: toastId, content, timer } = props;
+  const { id: toastId, content, timer, type } = props;
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    let id = null;
+    if (progress < 96) {
+      id = setInterval(() => {
+        setProgress(progress + 5)
+      }, timer / 30)
+    }
+
+    return () => {
+      if (id) clearInterval(id);
+    }
+  }, [progress, timer]);
 
   useEffect(() => {
     const id = setTimeout(() => {
@@ -13,9 +28,27 @@ function Toast(props: Toast) {
     return () => clearTimeout(id);
   }, [toastId, timer]);
 
-  return <div>
-    <span>{content}</span>
-  </div>
+  return <Box sx={{
+    border: '1px solid',
+    minWidth: '150px'
+  }}>
+    <Box sx={{
+      height: '5px',
+      borderBottom: '1px solid',
+    }}>
+      <Box sx={{
+        height: '100%',
+        backgroundColor: `${type === 'SUCCESS' ? 'green' : 'red'}`,
+        width: `${progress}%`,
+        transition: 'width 1s ease-out'
+      }}></Box>
+    </Box>
+    <Box sx={{
+      padding: '0.5rem'
+    }}>
+      <Typography variant="body1">{content}</Typography>
+    </Box>
+  </Box >
 }
 
 const useCustomSyncStore = <T,>(subscribe: (fn: () => void) => () => void, getData: () => T[]) => {
@@ -42,25 +75,42 @@ function ToastContainer() {
     toastManager.getToasts.bind(toastManager)
   )
 
-  return <div>
+  return <Box sx={{
+    position: 'fixed',
+    bottom: 0,
+    right: 0,
+    padding: '2rem',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.8rem'
+  }}>
     {toasts.map((t) => {
       return <Toast key={t.id} {...t} />
     })}
-  </div>
+  </Box>
 }
 
 export default function ToastExample() {
+  const toastManager = ToastManager.getInstance();
+
   const handleTest = () => {
-    const toastManager = ToastManager.getInstance();
     toastManager.show({
-      content: 'This is a test toast',
+      content: 'This is a test message...',
       timer: 3000,
       type: 'SUCCESS'
-    })
+    });
   }
 
-  return <div>
-    <button onClick={handleTest}>Test toast</button>
+  return <Box sx={{
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '2rem',
+    gap: '1rem',
+    margin: '0 auto'
+  }}>
+    <Button variant="contained" onClick={handleTest}>Publish</Button>
     <ToastContainer />
-  </div>
+  </Box>
 }
