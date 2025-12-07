@@ -62,6 +62,18 @@ export default function AppBarComponent() {
                 Nested Comments
               </Typography>
             </Link>
+            |
+            <Link to="/toast-notification" style={{ color: 'white', textDecoration: 'none' }}>
+              <Typography variant="body1" component="div" sx={{ flexGrow: 1 }}>
+                Toast Notification
+              </Typography>
+            </Link>
+            |
+            <Link to="/animate-sequence" style={{ color: 'white', textDecoration: 'none' }}>
+              <Typography variant="body1" component="div" sx={{ flexGrow: 1 }}>
+                Animate in Sequence
+              </Typography>
+            </Link>
           </Box>
         </Toolbar>
       </AppBar>

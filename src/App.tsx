@@ -7,6 +7,8 @@ import NestedFolders from './nested-folders';
 import InfiniteScroll from './infinite-scroll-hook';
 import NestedAccordion from './nested-accordion';
 import NestedComments from './nested-comments';
+import ToastExample from './toast-system';
+import AnimateInSequence from './animate-in-sequence';
 
 export default function App() {
 
@@ -22,6 +24,8 @@ export default function App() {
         <Route path='/infinite-scroll' element={<InfiniteScroll />} />
         <Route path='/nested-accordion' element={<NestedAccordion />} />
         <Route path='/nested-comments' element={<NestedComments />} />
+        <Route path='/toast-notification' element={<ToastExample />} />
+        <Route path='/animate-sequence' element={<AnimateInSequence />} />
       </Routes>
     </Router>
   )
